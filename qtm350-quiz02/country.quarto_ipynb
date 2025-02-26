@@ -1,0 +1,112 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Country Analysis\"\n",
+        "format: html\n",
+        "execute:\n",
+        "  echo: true\n",
+        "  warning: false\n",
+        "---\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "## Introduction\n",
+        "\n",
+        "This analysis tracks the changes in life expectancy, GDP per capita, and population for a specific country over time.\n"
+      ],
+      "id": "208aefa8"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Import libraries\n",
+        "import pandas as pd\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "import numpy as np\n",
+        "\n",
+        "# dataset\n",
+        "gapminder = pd.read_csv('gapminder.csv')\n",
+        "\n",
+        "# i selected US for analysis\n",
+        "country_name = \"United States\"\n",
+        "country_data = gapminder[gapminder['country'] == country_name]\n",
+        "\n",
+        "fig, axes = plt.subplots(3, 1, figsize=(12, 15), sharex=True)\n",
+        "\n",
+        "# 1. Life Expectancy Over Time\n",
+        "sns.lineplot(\n",
+        "    data=country_data,\n",
+        "    x=\"year\",\n",
+        "    y=\"life_expectancy\",\n",
+        "    marker='o',\n",
+        "    color='blue',\n",
+        "    ax=axes[0]\n",
+        ")\n",
+        "axes[0].set_title(f'Life Expectancy in {country_name} (1952-2007)')\n",
+        "axes[0].set_ylabel('Life Expectancy (years)')\n",
+        "axes[0].grid(True)\n",
+        "\n",
+        "# 2. GDP per Capita Over Time\n",
+        "sns.lineplot(\n",
+        "    data=country_data,\n",
+        "    x=\"year\",\n",
+        "    y=\"gdp_per_capita\",\n",
+        "    marker='o',\n",
+        "    color='green',\n",
+        "    ax=axes[1]\n",
+        ")\n",
+        "axes[1].set_title(f'GDP per Capita in {country_name} (1952-2007)')\n",
+        "axes[1].set_ylabel('GDP per Capita ($)')\n",
+        "axes[1].grid(True)\n",
+        "\n",
+        "# 3. Population Over Time\n",
+        "sns.lineplot(\n",
+        "    data=country_data,\n",
+        "    x=\"year\",\n",
+        "    y=\"population_millions\",\n",
+        "    marker='o',\n",
+        "    color='red',\n",
+        "    ax=axes[2]\n",
+        ")\n",
+        "axes[2].set_title(f'Population in {country_name} (1952-2007)')\n",
+        "axes[2].set_xlabel('Year')\n",
+        "axes[2].set_ylabel('Population (millions)')\n",
+        "axes[2].grid(True)\n",
+        "\n",
+        "plt.tight_layout()\n",
+        "plt.show()"
+      ],
+      "id": "df1975b1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Analysis\n",
+        "\n",
+        "The United States shows significant development across all three metrics from 1952 to 2007."
+      ],
+      "id": "e39436a7"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/kimminjoo/Library/Python/3.9/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
