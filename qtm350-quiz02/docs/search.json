@@ -1,0 +1,86 @@
+[
+  {
+    "objectID": "life-population.html",
+    "href": "life-population.html",
+    "title": "Life Expectancy and Population",
+    "section": "",
+    "text": "This analysis examines the relationship between life expectancy and population size.\n\n# Import libraries\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport numpy as np\n\n# dataset\ngapminder = pd.read_csv('gapminder.csv')\n\n# scatter plot\nscatter = sns.scatterplot(\n    data=gapminder,\n    x=\"population_millions\",\n    y=\"life_expectancy\",\n    hue=\"continent\",\n    size=\"gdp_per_capita\",\n    sizes=(20, 500),\n    alpha=0.7\n)\n\nplt.xscale('log')\n\nplt.xlabel('Population (millions, log scale)')\nplt.ylabel('Life Expectancy (years)')\nplt.title('Life Expectancy vs. Population Size by Country')\n\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "life-population.html#introduction",
+    "href": "life-population.html#introduction",
+    "title": "Life Expectancy and Population",
+    "section": "",
+    "text": "This analysis examines the relationship between life expectancy and population size.\n\n# Import libraries\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport numpy as np\n\n# dataset\ngapminder = pd.read_csv('gapminder.csv')\n\n# scatter plot\nscatter = sns.scatterplot(\n    data=gapminder,\n    x=\"population_millions\",\n    y=\"life_expectancy\",\n    hue=\"continent\",\n    size=\"gdp_per_capita\",\n    sizes=(20, 500),\n    alpha=0.7\n)\n\nplt.xscale('log')\n\nplt.xlabel('Population (millions, log scale)')\nplt.ylabel('Life Expectancy (years)')\nplt.title('Life Expectancy vs. Population Size by Country')\n\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "life-population.html#analysis",
+    "href": "life-population.html#analysis",
+    "title": "Life Expectancy and Population",
+    "section": "Analysis",
+    "text": "Analysis\nThe visualization shows that there isn’t a clear direct correlation between population size and life expectancy."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "qtm350-quiz02",
+    "section": "",
+    "text": "The Gapminder dataset provides insights into global health and economic trends across 142 countries from 1952 to 2007."
+  },
+  {
+    "objectID": "index.html#explore-the-data",
+    "href": "index.html#explore-the-data",
+    "title": "qtm350-quiz02",
+    "section": "Explore the Data:",
+    "text": "Explore the Data:\n\nLife Expectancy and GDP per Capita\nLife Expectancy and Population\nCountry Analysis"
+  },
+  {
+    "objectID": "country.html",
+    "href": "country.html",
+    "title": "Country Analysis",
+    "section": "",
+    "text": "This analysis tracks the changes in life expectancy, GDP per capita, and population for a specific country over time.\n\n# Import libraries\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport numpy as np\n\n# dataset\ngapminder = pd.read_csv('gapminder.csv')\n\n# i selected US for analysis\ncountry_name = \"United States\"\ncountry_data = gapminder[gapminder['country'] == country_name]\n\nfig, axes = plt.subplots(3, 1, figsize=(12, 15), sharex=True)\n\n# 1. Life Expectancy Over Time\nsns.lineplot(\n    data=country_data,\n    x=\"year\",\n    y=\"life_expectancy\",\n    marker='o',\n    color='blue',\n    ax=axes[0]\n)\naxes[0].set_title(f'Life Expectancy in {country_name} (1952-2007)')\naxes[0].set_ylabel('Life Expectancy (years)')\naxes[0].grid(True)\n\n# 2. GDP per Capita Over Time\nsns.lineplot(\n    data=country_data,\n    x=\"year\",\n    y=\"gdp_per_capita\",\n    marker='o',\n    color='green',\n    ax=axes[1]\n)\naxes[1].set_title(f'GDP per Capita in {country_name} (1952-2007)')\naxes[1].set_ylabel('GDP per Capita ($)')\naxes[1].grid(True)\n\n# 3. Population Over Time\nsns.lineplot(\n    data=country_data,\n    x=\"year\",\n    y=\"population_millions\",\n    marker='o',\n    color='red',\n    ax=axes[2]\n)\naxes[2].set_title(f'Population in {country_name} (1952-2007)')\naxes[2].set_xlabel('Year')\naxes[2].set_ylabel('Population (millions)')\naxes[2].grid(True)\n\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "country.html#introduction",
+    "href": "country.html#introduction",
+    "title": "Country Analysis",
+    "section": "",
+    "text": "This analysis tracks the changes in life expectancy, GDP per capita, and population for a specific country over time.\n\n# Import libraries\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport numpy as np\n\n# dataset\ngapminder = pd.read_csv('gapminder.csv')\n\n# i selected US for analysis\ncountry_name = \"United States\"\ncountry_data = gapminder[gapminder['country'] == country_name]\n\nfig, axes = plt.subplots(3, 1, figsize=(12, 15), sharex=True)\n\n# 1. Life Expectancy Over Time\nsns.lineplot(\n    data=country_data,\n    x=\"year\",\n    y=\"life_expectancy\",\n    marker='o',\n    color='blue',\n    ax=axes[0]\n)\naxes[0].set_title(f'Life Expectancy in {country_name} (1952-2007)')\naxes[0].set_ylabel('Life Expectancy (years)')\naxes[0].grid(True)\n\n# 2. GDP per Capita Over Time\nsns.lineplot(\n    data=country_data,\n    x=\"year\",\n    y=\"gdp_per_capita\",\n    marker='o',\n    color='green',\n    ax=axes[1]\n)\naxes[1].set_title(f'GDP per Capita in {country_name} (1952-2007)')\naxes[1].set_ylabel('GDP per Capita ($)')\naxes[1].grid(True)\n\n# 3. Population Over Time\nsns.lineplot(\n    data=country_data,\n    x=\"year\",\n    y=\"population_millions\",\n    marker='o',\n    color='red',\n    ax=axes[2]\n)\naxes[2].set_title(f'Population in {country_name} (1952-2007)')\naxes[2].set_xlabel('Year')\naxes[2].set_ylabel('Population (millions)')\naxes[2].grid(True)\n\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "country.html#analysis",
+    "href": "country.html#analysis",
+    "title": "Country Analysis",
+    "section": "Analysis",
+    "text": "Analysis\nThe United States shows significant development across all three metrics from 1952 to 2007."
+  },
+  {
+    "objectID": "life-gdp.html",
+    "href": "life-gdp.html",
+    "title": "Life Expectancy and GDP per Capita",
+    "section": "",
+    "text": "This analysis explores the relationship between life expectancy and GDP per capita across different countries and years.\n\n# Import libraries\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport numpy as np\n\n# dataset\ngapminder = pd.read_csv('gapminder.csv')\n\n# scatter plot\nscatter = sns.scatterplot(\n    data=gapminder,\n    x=\"gdp_per_capita\",\n    y=\"life_expectancy\",\n    hue=\"continent\",\n    size=\"population_millions\",\n    sizes=(20, 500),\n    alpha=0.7\n)\n\nplt.xscale('log')\n\nplt.xlabel('GDP per Capita (log scale)')\nplt.ylabel('Life Expectancy (years)')\nplt.title('Life Expectancy vs. GDP per Capita (2007)')\n\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "life-gdp.html#introduction",
+    "href": "life-gdp.html#introduction",
+    "title": "Life Expectancy and GDP per Capita",
+    "section": "",
+    "text": "This analysis explores the relationship between life expectancy and GDP per capita across different countries and years.\n\n# Import libraries\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport numpy as np\n\n# dataset\ngapminder = pd.read_csv('gapminder.csv')\n\n# scatter plot\nscatter = sns.scatterplot(\n    data=gapminder,\n    x=\"gdp_per_capita\",\n    y=\"life_expectancy\",\n    hue=\"continent\",\n    size=\"population_millions\",\n    sizes=(20, 500),\n    alpha=0.7\n)\n\nplt.xscale('log')\n\nplt.xlabel('GDP per Capita (log scale)')\nplt.ylabel('Life Expectancy (years)')\nplt.title('Life Expectancy vs. GDP per Capita (2007)')\n\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "life-gdp.html#analysis",
+    "href": "life-gdp.html#analysis",
+    "title": "Life Expectancy and GDP per Capita",
+    "section": "Analysis",
+    "text": "Analysis\nThe scatter plot reveals a strong positive correlation between GDP per capita and life expectancy. Countries with higher GDP per capita tend to have longer life expectancies. The relationship appears to be logarithmic rather than linear, suggesting that increases in GDP have diminishing returns on life expectancy after a certain threshold."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  }
+]

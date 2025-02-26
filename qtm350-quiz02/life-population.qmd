@@ -1,0 +1,46 @@
+---
+title: "Life Expectancy and Population"
+format: html
+execute:
+  echo: true
+  warning: false
+---
+
+## Introduction
+
+This analysis examines the relationship between life expectancy and population size.
+
+```{python}
+# Import libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+
+# dataset
+gapminder = pd.read_csv('gapminder.csv')
+
+# scatter plot
+scatter = sns.scatterplot(
+    data=gapminder,
+    x="population_millions",
+    y="life_expectancy",
+    hue="continent",
+    size="gdp_per_capita",
+    sizes=(20, 500),
+    alpha=0.7
+)
+
+plt.xscale('log')
+
+plt.xlabel('Population (millions, log scale)')
+plt.ylabel('Life Expectancy (years)')
+plt.title('Life Expectancy vs. Population Size by Country')
+
+plt.tight_layout()
+plt.show()
+```
+
+## Analysis
+
+The visualization shows that there isn't a clear direct correlation between population size and life expectancy.
